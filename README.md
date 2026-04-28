@@ -48,23 +48,20 @@ face-auth-system/
 
 ### 1. Clone the Repository
 
-``bash
 git clone <your_repository_link>
 cd face-auth-system
 
 ### 2. Install Dependencies
 
-``bash
 pip install -r requirements.txt
 
 ### 3. Run the Application
 
-``bash
 python app.py
 
 # The backend server starts on: 
 
-``bash
+
 http://127.0.0.1:5000
 
 API Endpoints
@@ -76,9 +73,10 @@ Registers a new user with:
 - name
 - email
 - face image (JPEG/PNG)
+
 Success Response
 
-```json
+
 {
   "success": true,
   "message": "User registered successfully"
@@ -86,7 +84,7 @@ Success Response
 
 Failed Authentication
 
-```json
+
 {
   "success": false,
   "message": "Face does not match",
