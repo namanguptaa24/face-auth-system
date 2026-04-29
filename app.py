@@ -34,8 +34,7 @@ def register():
         if existing_user:
             return jsonify({"success": False, "message": "Email already registered"}), 400
 
-        # image_path = os.path.join(UPLOAD_FOLDER, image.filename)
-        # image.save(image_path)
+        
         unique_filename = str(uuid.uuid4()) + "_" + image.filename
         image_path = os.path.join(UPLOAD_FOLDER, unique_filename)
         image.save(image_path)
@@ -57,8 +56,7 @@ def register():
             "message": "User registered successfully"
         })
 
-    # except Exception as e:
-    #     return jsonify({"success": False, "message": str(e)}), 500
+    
     except Exception:
         return jsonify({"success": False, "message": "Registration failed due to invalid face input"}), 500
 
@@ -77,18 +75,11 @@ def authenticate():
 
         stored_embedding = json.loads(user[4])
 
-        #image_path = os.path.join(UPLOAD_FOLDER, "auth_" + image.filename)
-        #image.save(image_path)
+       
         unique_filename = "auth_" + str(uuid.uuid4()) + "_" + image.filename
         image_path = os.path.join(UPLOAD_FOLDER, unique_filename)
         image.save(image_path)
 
-        # valid, msg = validate_single_face(image_path)
-        # if not valid:
-        #     return jsonify({"success": False, "message": msg}), 400
-        # valid, msg = validate_single_face(image_path)
-        # if not valid:
-        #     return jsonify({"success": False, "message": "No valid face detected in uploaded image"}), 400
 
         valid, msg = validate_single_face(image_path)
         if not valid:
@@ -115,11 +106,10 @@ def authenticate():
                 "distance": float(distance)
             })
 
-    # except Exception as e:
-    #     return jsonify({"success": False, "message": str(e)}), 500
+    
     except Exception:
         return jsonify({"success": False, "message": "Authentication failed due to invalid face input"}), 500
 
 if __name__ == "__main__":
-    # app.run(debug=True)
+   
     app.run(debug=False)
