@@ -57,9 +57,9 @@ def register():
         })
 
     
-    except Exception:
-        return jsonify({"success": False, "message": "Registration failed due to invalid face input"}), 500
-
+    except Exception as e:
+        print("REGISTER ERROR:", e)
+        return jsonify({"success": False, "message": str(e)}), 500
 @app.route("/authenticate", methods=["POST"])
 def authenticate():
     try:
